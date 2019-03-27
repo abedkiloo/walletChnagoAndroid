@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">walletChango</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Wallet Chango</string>
+    <string name="nav_header_subtitle">Your one stop crowd funding platform</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_project_details">ProjectDetails</string>
+    <string name="title_activity_create_fund">Create Fund Request</string>
+    <string name="title_activity_wallet">Wallet</string>
+</resources>

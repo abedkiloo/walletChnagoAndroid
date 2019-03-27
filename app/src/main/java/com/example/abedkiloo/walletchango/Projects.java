@@ -1,0 +1,108 @@
+package com.example.abedkiloo.walletchango;
+
+import com.google.gson.annotations.SerializedName;
+
+public class Projects {
+    private String id;
+
+    @SerializedName("project_name")
+    private String project_name;
+
+    @SerializedName("project_description")
+    private String project_description;
+
+    @SerializedName("group")
+    private Group group;
+
+    private String minimum_deposit;
+    @SerializedName("project_target_amount")
+    private int target_investment;
+    @SerializedName("amount_collected")
+    private int amount_deposited;
+    private String start_date;
+    private String end_date;
+
+    public Projects() {
+    }
+
+    public Projects(String id, String project_name, String project_description, int amount_deposited, int target_investment) {
+        this.id = id;
+        this.project_name = project_name;
+        this.project_description = project_description;
+        this.amount_deposited = amount_deposited;
+        this.target_investment = target_investment;
+    }
+
+    public String getProject_description() {
+        return project_description;
+    }
+
+    public void setProject_description(String project_description) {
+        this.project_description = project_description;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getProject_name() {
+        return project_name;
+    }
+
+    public void setProject_name(String project_name) {
+        this.project_name = project_name;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public String getMinimum_deposit() {
+        return minimum_deposit;
+    }
+
+    public void setMinimum_deposit(String minimum_deposit) {
+        this.minimum_deposit = minimum_deposit;
+    }
+
+    public int getTarget_investment() {
+        return target_investment;
+    }
+
+    public void setTarget_investment(int target_investment) {
+        this.target_investment = target_investment;
+    }
+
+    public int getAmount_deposited() {
+        return amount_deposited;
+    }
+
+    public void setAmount_deposited(int amount_deposited) {
+        this.amount_deposited = amount_deposited;
+    }
+
+    public String getStart_date() {
+        return start_date;
+    }
+
+    public void setStart_date(String start_date) {
+        this.start_date = start_date;
+    }
+
+    public String getEnd_date() {
+        return end_date;
+    }
+
+    public void setEnd_date(String end_date) {
+        this.end_date = end_date;
+    }
+}
+
