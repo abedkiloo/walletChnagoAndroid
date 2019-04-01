@@ -11,4 +11,9 @@
     <string name="title_activity_project_details">ProjectDetails</string>
     <string name="title_activity_create_fund">Create Fund Request</string>
     <string name="title_activity_wallet">Wallet</string>
+    <string name="short_description">Short Description</string>
+    <string name="longer_description">Longer Description</string>
+    <string name="cause_progress">CAUSE PROGRESS</string>
+    <string name="raised_kshs">Raised Amount Kshs:  </string>
+    <string name="total_investors">Total Investors : </string>
 </resources>

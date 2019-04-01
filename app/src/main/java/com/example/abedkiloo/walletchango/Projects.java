@@ -14,13 +14,30 @@ public class Projects {
     @SerializedName("group")
     private Group group;
 
+    @SerializedName("minimum_deposit")
     private String minimum_deposit;
+
     @SerializedName("project_target_amount")
     private int target_investment;
+
+
+    @SerializedName("members_subscribed")
+    private int members_subscribed;
+
     @SerializedName("amount_collected")
     private int amount_deposited;
+
+    @SerializedName("start_date")
     private String start_date;
+
+    @SerializedName("end_date")
     private String end_date;
+
+
+    @SerializedName("user")
+    private User user;
+
+
 
     public Projects() {
     }
@@ -104,5 +121,24 @@ public class Projects {
     public void setEnd_date(String end_date) {
         this.end_date = end_date;
     }
+
+    public int getMembers_subscribed() {
+        return members_subscribed;
+    }
+
+    public void setMembers_subscribed(int members_subscribed) {
+        this.members_subscribed = members_subscribed;
+    }
+
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 }
 

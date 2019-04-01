@@ -20,30 +20,32 @@
             android:orientation="vertical">
 
             <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/short_project_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_marginRight="@dimen/activity_vertical_margin"
-                android:text="Short Description"
+                android:text="@string/short_description"
                 android:textStyle="bold" />
 
             <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/longer_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_vertical_margin"
                 android:lines="3"
                 android:padding="10sp"
-                android:text="Longer Description"
+                android:text="@string/longer_description"
                 android:textStyle="bold" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10sp"
                 android:background="@drawable/custom_primary_button"
                 android:padding="12sp"
-                android:text="CAUSE PROGRESS" />
+                android:layout_margin="@dimen/activity_vertical_margin"
+                android:text="@string/cause_progress" />
 
             <View
                 android:layout_width="match_parent"
@@ -67,27 +69,30 @@
                     <TextView
                         android:layout_width="0sp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.3"
-                        android:text="Raised Kshs" />
+                        android:layout_weight="0.5"
+                        android:layout_marginLeft="@dimen/activity_vertical_margin"
+                        android:text="@string/raised_kshs" />
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/raised_amount"
                         android:layout_width="0sp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.3"
+                        android:layout_weight="0.2"
+                        android:textStyle="bold"
                         android:text="4000" />
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
                         android:layout_width="0sp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.2"
                         android:text="out of" />
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/out_of_amount"
                         android:layout_width="0sp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.3"
+                        android:layout_weight="0.2"
+                        android:textStyle="bold"
                         android:text="4000" />
 
                 </LinearLayout>
@@ -104,20 +109,21 @@
                     android:orientation="horizontal"
                     android:weightSum="1">
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
                         android:layout_width="0sp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.4"
-                        android:text="Total Investors" />
+                        android:layout_marginLeft="@dimen/activity_vertical_margin"
+                        android:text="@string/total_investors" />
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/total_investors"
                         android:layout_width="0sp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.6"
-                        android:gravity="end"
+                        android:textStyle="bold"
                         android:text="1"
-                        android:textAlignment="textEnd" />
+                        />
                 </LinearLayout>
             </LinearLayout>
 
@@ -126,27 +132,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <android.support.v7.widget.AppCompatTextView
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/single_project_transactions"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_vertical_margin"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:layout_marginRight="@dimen/activity_vertical_margin"
-                    android:text="Long Description"
-                    android:textStyle="bold" />
+                    android:layout_height="wrap_content">
 
-                <android.support.v7.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/activity_vertical_margin"
-                    android:lines="5"
-                    android:padding="10sp"
-                    android:text="Longer Description"
-                    android:textStyle="bold" />
+                </android.support.v7.widget.RecyclerView>
             </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -157,23 +153,23 @@
 
         <TextView
             android:layout_width="0sp"
-            android:layout_height="40sp"
+            android:layout_height="60sp"
             android:layout_weight="0.5"
             android:background="@drawable/custom_primary_button"
+            android:padding="10sp"
             android:text="Invest Now"
-            android:padding="5sp"
+            android:textAlignment="center"
             android:textColor="#fff"
-            android:textSize="20sp"
-            android:textAlignment="center" />
+            android:textSize="20sp" />
 
 
         <TextView
             android:layout_width="0sp"
-            android:layout_height="40sp"
+            android:layout_height="60sp"
             android:layout_weight="0.5"
             android:background="@drawable/custom_button"
+            android:padding="10sp"
             android:text="Questions"
-            android:padding="5sp"
             android:textAlignment="center"
             android:textColor="#fff"
             android:textSize="20sp" />

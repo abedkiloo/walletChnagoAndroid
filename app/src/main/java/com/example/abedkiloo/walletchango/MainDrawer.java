@@ -77,34 +77,34 @@ public class MainDrawer extends AppCompatActivity
         //setting adapter to recyclerview
         recyclerView.setAdapter(adapter);
 
-//        getProjects();
+        getProjects();
 
 
-        //adding some items to our list
-        projectsList.add(
-                new Projects(
-                        "1",
-                        "Apple MacBook",
-                        "Apple MacBook sdgjljmsg jsdlfjgmlsjdg",
-                        1300,
-                        2600
-                ));
-        projectsList.add(
-                new Projects(
-                        "1",
-                        "Share Listing",
-                        "Share is the public amout of sahres ",
-                        1700,
-                        2600
-                ));
-        projectsList.add(
-                new Projects(
-                        "1",
-                        "Stroer Listing",
-                        "Share is the public amout of sahres ",
-                        7800,
-                        8600
-                ));
+//        //adding some items to our list
+//        projectsList.add(
+//                new Projects(
+//                        "1",
+//                        "Apple MacBook",
+//                        "Apple MacBook sdgjljmsg jsdlfjgmlsjdg",
+//                        1300,
+//                        2600
+//                ));
+//        projectsList.add(
+//                new Projects(
+//                        "1",
+//                        "Share Listing",
+//                        "Share is the public amout of sahres ",
+//                        1700,
+//                        2600
+//                ));
+//        projectsList.add(
+//                new Projects(
+//                        "1",
+//                        "Stroer Listing",
+//                        "Share is the public amout of sahres ",
+//                        7800,
+//                        8600
+//                ));
 
 
     }
@@ -131,20 +131,19 @@ public class MainDrawer extends AppCompatActivity
 
                 //In this point we got our Projects list
                 //thats damn easy right ;) 
-                List<Projects> projectsList = response.body();
-                Log.e("PROJECTS", String.valueOf(projectsList.get(1).getProject_name()));
+                List<Projects> projectsList2 = response.body();
 
-                Log.e("CALL", "MADE");
+                Projects projects2 ;
 
+                for (int i = 0; i < projectsList2.size(); i++) {
+                    projects2 = new Projects();
+                    projects2.setId(projectsList2.get(i).getId());
+                    projects2.setProject_name(projectsList2.get(i).getProject_name());
+                    projects2.setProject_description(projectsList2.get(i).getProject_description());
+                    projects2.setAmount_deposited(projectsList2.get(i).getAmount_deposited());
+                    projects2.setTarget_investment(projectsList2.get(i).getTarget_investment());
+                    projectsList.add(projects2);
 
-                for (int i = 0; i < projectsList.size(); i++) {
-                    Log.e("PROJECTS", String.valueOf(projectsList.get(i).getProject_name()));
-//                    projects = new Projects(projectsList.get(i).getId(),
-//                            projectsList.get(i).getProject_name();,
-//                            projectsList.get(i).getProject_description(),
-//                            projectsList.get(i).getAmount_deposited(),
-//                            projectsList.get(i).getTarget_investment());
-//                    projectsList.add(projects);
                 }
 
                 adapter.notifyDataSetChanged();
@@ -152,7 +151,6 @@ public class MainDrawer extends AppCompatActivity
                 //creating recyclerview adapter
 
 
-                Log.e("PROJECTS", String.valueOf(projectsList.get(1).getProject_name()));
 
                 //now we can do whatever we want with this list
 
