@@ -16,4 +16,9 @@
     <string name="cause_progress">CAUSE PROGRESS</string>
     <string name="raised_kshs">Raised Amount Kshs:  </string>
     <string name="total_investors">Total Investors : </string>
+    <string name="your_wallet_amount_is">Your wallet Amount is :</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
 </resources>

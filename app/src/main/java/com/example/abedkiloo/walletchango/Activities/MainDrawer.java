@@ -1,4 +1,4 @@
-package com.example.abedkiloo.walletchango;
+package com.example.abedkiloo.walletchango.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.example.abedkiloo.walletchango.Helpers.ApiService;
+import com.example.abedkiloo.walletchango.Adapters.ProjectAdapter;
+import com.example.abedkiloo.walletchango.DataModel.Projects;
+import com.example.abedkiloo.walletchango.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -113,13 +118,13 @@ public class MainDrawer extends AppCompatActivity
         Log.e("CALL", "MAKING");
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Api.BASE_URL)
+                .baseUrl(ApiService.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create()) //Here we are using the GsonConverterFactory to directly convert json data to object
                 .build();
 
 
         //creating the api interface
-        Api api = retrofit.create(Api.class);
+        ApiService api = retrofit.create(ApiService.class);
 
         //now making the call object
         //Here we are using the api method that we created inside the api interface

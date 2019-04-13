@@ -1,16 +1,18 @@
-package com.example.abedkiloo.walletchango;
+package com.example.abedkiloo.walletchango.Adapters;
 
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.abedkiloo.walletchango.Activities.ProjectDetails;
+import com.example.abedkiloo.walletchango.DataModel.Projects;
+import com.example.abedkiloo.walletchango.Helpers.CircleDisplay;
+import com.example.abedkiloo.walletchango.R;
 
 import java.util.List;
 
@@ -48,7 +50,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
         holder.circleDisplay.setAnimDuration(2000);
         holder.circleDisplay.setValueWidthPercent(45f);
         holder.circleDisplay.setTextSize(26f);
-        holder.circleDisplay.setColor(Color.CYAN);
+        holder.circleDisplay.setColor(R.color.colorPrimary);
         holder.circleDisplay.setDrawText(true);
         holder.circleDisplay.setDrawInnerCircle(true);
         holder.circleDisplay.setFormatDigits(1);

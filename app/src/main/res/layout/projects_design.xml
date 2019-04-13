@@ -27,7 +27,7 @@
                     android:orientation="vertical"
                    >
 
-                    <com.example.abedkiloo.walletchango.CircleDisplay
+                    <com.example.abedkiloo.walletchango.Helpers.CircleDisplay
                         android:id="@+id/circularDisplay"
                         android:layout_width="120sp"
                         android:layout_height="120sp" />

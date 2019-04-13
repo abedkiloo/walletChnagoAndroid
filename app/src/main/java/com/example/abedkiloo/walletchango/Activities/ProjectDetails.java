@@ -1,4 +1,4 @@
-package com.example.abedkiloo.walletchango;
+package com.example.abedkiloo.walletchango.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,10 @@ import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+
+import com.example.abedkiloo.walletchango.Helpers.ApiService;
+import com.example.abedkiloo.walletchango.DataModel.Projects;
+import com.example.abedkiloo.walletchango.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,12 +59,12 @@ public class ProjectDetails extends AppCompatActivity {
 
     public void getProjectDetail(final String id) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Api.BASE_URL)
+                .baseUrl(ApiService.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create()) //Here we are using the GsonConverterFactory to directly convert json data to object
                 .build();
 
         //creating the api interface
-        Api api = retrofit.create(Api.class);
+        ApiService api = retrofit.create(ApiService.class);
 
         Call<Projects> projectDetailsCall = api.getProject(id);
         projectDetailsCall.enqueue(new Callback<Projects>() {

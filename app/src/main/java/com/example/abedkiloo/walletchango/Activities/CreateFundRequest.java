@@ -1,7 +1,9 @@
-package com.example.abedkiloo.walletchango;
+package com.example.abedkiloo.walletchango.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.abedkiloo.walletchango.R;
 
 public class CreateFundRequest extends AppCompatActivity {
 

@@ -1,10 +1,13 @@
-package com.example.abedkiloo.walletchango;
+package com.example.abedkiloo.walletchango.Activities;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
+import com.example.abedkiloo.walletchango.Fragments.Pager;
+import com.example.abedkiloo.walletchango.R;
 
 public class Wallet extends AppCompatActivity implements TabLayout.OnTabSelectedListener{
 

@@ -1,4 +1,4 @@
-package com.example.abedkiloo.walletchango;
+package com.example.abedkiloo.walletchango.Fragments;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -22,8 +22,8 @@ public class Pager extends FragmentStatePagerAdapter {
         //Returning the current tabs
         switch (position) {
             case 0:
-                Tab1 tab1 = new Tab1();
-                return tab1;
+                WalletDetail walletDetail = new WalletDetail();
+                return walletDetail;
             case 1:
                 Tab2 tab2 = new Tab2();
                 return tab2;

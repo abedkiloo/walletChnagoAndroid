@@ -1,4 +1,4 @@
-package com.example.abedkiloo.walletchango;
+package com.example.abedkiloo.walletchango.DataModel;
 
 import com.google.gson.annotations.SerializedName;
 
