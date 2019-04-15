@@ -2,6 +2,7 @@ package com.example.abedkiloo.walletchango.Helpers;
 
 import com.example.abedkiloo.walletchango.DataModel.Projects;
 import com.example.abedkiloo.walletchango.DataModel.User;
+import com.example.abedkiloo.walletchango.DataModel.Wallet;
 
 import java.util.List;
 
@@ -26,5 +27,8 @@ public interface ApiService {
     @POST("user/login")
     @FormUrlEncoded
     Call<User> loginUser(@Field("email") String email, @Field("password") String password);
+
+    @GET("wallet/{id}")
+    Call<Wallet> getWalletDetail(@Path("id") String id);
 
 }

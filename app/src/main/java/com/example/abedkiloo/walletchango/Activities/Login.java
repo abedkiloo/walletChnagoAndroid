@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -19,6 +20,8 @@ import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
     AppCompatEditText email, password;
+
+    // api service for request to db
     ApiService apiService;
 
     // Session Manager Class
@@ -67,7 +70,9 @@ public class Login extends AppCompatActivity {
                     // Creating user login session
                     // For testing i am stroing name, email as follow
                     // Use user real data
-                    session.createLoginSession(user.getName(), user.getEmail());
+                    Log.e("USER_ID",user.getId());
+
+                    session.createLoginSession(user.getId(), user.getName(), user.getEmail());
 
                     startActivity(new Intent(Login.this, MainActivity.class));
                 } else {

@@ -20,9 +20,11 @@ import android.widget.Toast;
 import com.example.abedkiloo.walletchango.Helpers.ApiService;
 import com.example.abedkiloo.walletchango.Adapters.ProjectAdapter;
 import com.example.abedkiloo.walletchango.DataModel.Projects;
+import com.example.abedkiloo.walletchango.Helpers.SessionManager;
 import com.example.abedkiloo.walletchango.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
@@ -44,6 +46,10 @@ public class MainDrawer extends AppCompatActivity
     ProjectAdapter adapter;
 
     Projects projects;
+
+
+    //session manager
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +78,10 @@ public class MainDrawer extends AppCompatActivity
 
         //initializing the projectlist
         projectsList = new ArrayList<>();
+
+
+        sessionManager = new SessionManager(getApplicationContext());
+        sessionManager.checkLogin();
 
 //getting the recyclerview from xml
         recyclerView = findViewById(R.id.recyclerView);
@@ -110,12 +120,13 @@ public class MainDrawer extends AppCompatActivity
 //                        7800,
 //                        8600
 //                ));
+        HashMap<String,String> user=sessionManager.getUserDetails();
+        Log.e("USER_",user.get(SessionManager.KEY_USER_ID));
 
 
     }
 
     private void getProjects() {
-        Log.e("CALL", "MAKING");
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiService.BASE_URL)
@@ -138,7 +149,7 @@ public class MainDrawer extends AppCompatActivity
                 //thats damn easy right ;) 
                 List<Projects> projectsList2 = response.body();
 
-                Projects projects2 ;
+                Projects projects2;
 
                 for (int i = 0; i < projectsList2.size(); i++) {
                     projects2 = new Projects();
@@ -154,7 +165,6 @@ public class MainDrawer extends AppCompatActivity
                 adapter.notifyDataSetChanged();
 
                 //creating recyclerview adapter
-
 
 
                 //now we can do whatever we want with this list
@@ -218,6 +228,8 @@ public class MainDrawer extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        } else if (id == R.id.nav_log_out) {
+            sessionManager.logoutUser();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
