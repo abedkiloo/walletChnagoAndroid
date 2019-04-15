@@ -31,4 +31,11 @@ public interface ApiService {
     @GET("wallet/{id}")
     Call<Wallet> getWalletDetail(@Path("id") String id);
 
+
+    @POST("user/deposit")
+    @FormUrlEncoded
+    Call<Wallet> depoitMpesa(@Field("wallet_id") String wallet_id, @Field("user_id") String user_id,
+                             @Field("amount") String amount, @Field("transaction_type") String transaction_type
+    );
+
 }

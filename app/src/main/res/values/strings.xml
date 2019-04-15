@@ -26,4 +26,10 @@
     <string name="share">Share</string>
     <string name="profile">Profile</string>
     <string name="wallet">Wallet</string>
+    <string name="deposit_now">Deposit Now</string>
+    <string name="withdraw_amount">Withdraw Amount</string>
+    <string name="card">Card</string>
+    <string name="mpesa">Mpesa</string>
+    <string name="select_deposit_type">Select Deposit Type</string>
+    <string name="deposit_amount">Deposit Amount</string>
 </resources>

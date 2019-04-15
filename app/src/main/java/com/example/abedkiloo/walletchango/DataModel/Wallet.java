@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class Wallet {
 
+
+    @SerializedName("id")
+    private String wallet_id;
     @SerializedName("wallet_name")
     private String wallet_name;
     @SerializedName("user_id")
@@ -13,6 +16,14 @@ public class Wallet {
     @SerializedName("user")
     private User user;
 
+
+    public String getWallet_id() {
+        return wallet_id;
+    }
+
+    public void setWallet_id(String wallet_id) {
+        this.wallet_id = wallet_id;
+    }
     
     public String getWallet_name() {
         return wallet_name;

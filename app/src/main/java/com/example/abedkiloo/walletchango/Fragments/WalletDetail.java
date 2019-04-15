@@ -1,6 +1,7 @@
 package com.example.abedkiloo.walletchango.Fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatTextView;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.abedkiloo.walletchango.Activities.DepositAmount;
 import com.example.abedkiloo.walletchango.DataModel.Wallet;
 import com.example.abedkiloo.walletchango.Helpers.ApiService;
 import com.example.abedkiloo.walletchango.Helpers.AppUtils;
@@ -31,9 +33,13 @@ public class WalletDetail extends Fragment {
     ApiService apiService;
 
 
-    AppCompatTextView amount;
+    AppCompatTextView amount, deposit_amount;
 
     HashMap<String, String> user_details;
+
+
+    //wallet detail
+    String wallet_id;
 
     //Overriden method onCreateView
     @Override
@@ -46,9 +52,21 @@ public class WalletDetail extends Fragment {
         View rootView = inflater.inflate(R.layout.wallet_detail, container, false);
 
         amount = rootView.findViewById(R.id.wallet_amount);
+        deposit_amount = rootView.findViewById(R.id.deposit_amount);
+        deposit_amount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent deposit_money = new Intent(getContext(), DepositAmount.class);
+                deposit_money.putExtra("wallet_id", wallet_id);
 
+                startActivity(deposit_money);
+            }
+        });
 
+        //hash map for use session
         user_details = session.getUserDetails();
+
+        //get wallet detail from end point
         wallet_detail();
         return rootView;
 
@@ -56,14 +74,13 @@ public class WalletDetail extends Fragment {
     }
 
     public void wallet_detail() {
-Log.e("WALLER",user_details.get(SessionManager.KEY_USER_ID));
         apiService.getWalletDetail(user_details.get(SessionManager.KEY_USER_ID)).enqueue(new Callback<Wallet>() {
             @Override
             public void onResponse(Call<Wallet> call, Response<Wallet> response) {
 
                 Wallet wallet = response.body();
-                Log.e("AMOUNT_", String.valueOf(response.body()) );
-                amount.setText(wallet.getWallet_amount());
+                amount.setText(getString(R.string.your_wallet_amount_is) + wallet.getWallet_amount());
+                wallet_id = wallet.getWallet_id();
             }
 
             @Override

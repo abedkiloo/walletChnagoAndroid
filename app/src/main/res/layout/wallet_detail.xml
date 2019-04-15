@@ -21,4 +21,38 @@
         android:textSize="20sp"
         android:text="@string/your_wallet_amount_is"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+
+        <TextView
+            android:layout_width="0sp"
+            android:layout_height="60sp"
+            android:layout_weight="0.5"
+            android:id="@+id/deposit_amount"
+            android:background="@drawable/custom_primary_button"
+            android:padding="10sp"
+            android:text="@string/deposit_now"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:layout_width="0sp"
+            android:layout_height="60sp"
+            android:layout_weight="0.5"
+            android:background="@drawable/custom_button"
+            android:padding="10sp"
+            android:text="@string/withdraw_amount"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+
 </RelativeLayout>
