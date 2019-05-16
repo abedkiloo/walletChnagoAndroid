@@ -8,21 +8,22 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.example.abedkiloo.walletchango.Helpers.ApiService;
 import com.example.abedkiloo.walletchango.DataModel.Projects;
+import com.example.abedkiloo.walletchango.Helpers.ApiService;
+import com.example.abedkiloo.walletchango.Helpers.AppUtils;
 import com.example.abedkiloo.walletchango.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProjectDetails extends AppCompatActivity {
 
 
     AppCompatTextView description_appCompatTextView, longer_description_appCompatTextView,
             amount_raised__appCompatTextView, amount_targetted__appCompatTextView, total_investors__appCompatTextView;
+    ApiService apiService;
+    String project_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +33,14 @@ public class ProjectDetails extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+
+        Intent intent=getIntent();
+        //get project_id
+        project_id=  intent.getStringExtra("project_id");
+        //api service
+        apiService = AppUtils.getAPIService();
         initView();
-        getProjectDetail("2");
+        getProjectDetail(project_id);
 
 
     }
@@ -58,16 +65,9 @@ public class ProjectDetails extends AppCompatActivity {
     }
 
     public void getProjectDetail(final String id) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(ApiService.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create()) //Here we are using the GsonConverterFactory to directly convert json data to object
-                .build();
 
-        //creating the api interface
-        ApiService api = retrofit.create(ApiService.class);
 
-        Call<Projects> projectDetailsCall = api.getProject(id);
-        projectDetailsCall.enqueue(new Callback<Projects>() {
+        apiService.getProject(id).enqueue(new Callback<Projects>() {
             @Override
             public void onResponse(Call<Projects> call, Response<Projects> response) {
                 Log.e("ID_", id);

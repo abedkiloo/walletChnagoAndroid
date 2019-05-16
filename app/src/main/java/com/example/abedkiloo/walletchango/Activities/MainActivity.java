@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         splash_image = findViewById(R.id.splash_image);
         Animation animation = new AlphaAnimation((float) 0.5, 0); // Change alpha from fully visible to invisible
-        animation.setDuration(500); // duration - half a second
+        animation.setDuration(400); // duration - half a second
         animation.setInterpolator(new LinearInterpolator()); // do not alter
         // animation
         // rate
@@ -54,6 +54,6 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(mainIntent);
                 MainActivity.this.finish();
             }
-        }, 2000);
+        }, 1200);
     }
 }

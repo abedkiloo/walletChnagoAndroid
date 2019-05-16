@@ -1,12 +1,10 @@
 package com.example.abedkiloo.walletchango.Activities;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
 import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.RadioButton;
 
 import com.example.abedkiloo.walletchango.DataModel.Wallet;
@@ -79,13 +77,13 @@ public class DepositAmount extends AppCompatActivity {
             return;
         } else {
 
-            apiService.depoitMpesa(wallet_id, user_details.get(SessionManager.KEY_USER_ID), deposit_amount, "1").enqueue(new Callback<Wallet>() {
+            apiService.depositMpesa(wallet_id, user_details.get(SessionManager.KEY_USER_ID), deposit_amount, "1").enqueue(new Callback<Wallet>() {
                 @Override
                 public void onResponse(Call<Wallet> call, Response<Wallet> response) {
 
 
-                    Log.e("WALLET_RESPONSE", String.valueOf(response.body()));
-                }
+                        Log.e("WALLET_RESPONSE", String.valueOf(response.body()));
+                    }
 
                 @Override
                 public void onFailure(Call<Wallet> call, Throwable t) {

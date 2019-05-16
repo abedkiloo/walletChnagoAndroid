@@ -3,23 +3,26 @@ package com.example.abedkiloo.walletchango.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.OrientationHelper;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
-import com.example.abedkiloo.walletchango.Helpers.ApiService;
 import com.example.abedkiloo.walletchango.Adapters.ProjectAdapter;
 import com.example.abedkiloo.walletchango.DataModel.Projects;
+import com.example.abedkiloo.walletchango.Helpers.ApiService;
+import com.example.abedkiloo.walletchango.Helpers.AppUtils;
 import com.example.abedkiloo.walletchango.Helpers.SessionManager;
 import com.example.abedkiloo.walletchango.R;
 
@@ -30,8 +33,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -51,6 +52,10 @@ public class MainDrawer extends AppCompatActivity
     //session manager
     SessionManager sessionManager;
 
+    //
+    ApiService apiService;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +70,10 @@ public class MainDrawer extends AppCompatActivity
                 startActivity(new Intent(view.getContext(), CreateFundRequest.class));
             }
         });
+
+        //api service
+        apiService = AppUtils.getAPIService();
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -86,7 +95,10 @@ public class MainDrawer extends AppCompatActivity
 //getting the recyclerview from xml
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        LinearLayoutManager layoutManager
+                = new LinearLayoutManager(this, OrientationHelper.VERTICAL, false);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         adapter = new ProjectAdapter(getApplicationContext(), projectsList);
 
         //setting adapter to recyclerview
@@ -95,58 +107,22 @@ public class MainDrawer extends AppCompatActivity
         getProjects();
 
 
-//        //adding some items to our list
-//        projectsList.add(
-//                new Projects(
-//                        "1",
-//                        "Apple MacBook",
-//                        "Apple MacBook sdgjljmsg jsdlfjgmlsjdg",
-//                        1300,
-//                        2600
-//                ));
-//        projectsList.add(
-//                new Projects(
-//                        "1",
-//                        "Share Listing",
-//                        "Share is the public amout of sahres ",
-//                        1700,
-//                        2600
-//                ));
-//        projectsList.add(
-//                new Projects(
-//                        "1",
-//                        "Stroer Listing",
-//                        "Share is the public amout of sahres ",
-//                        7800,
-//                        8600
-//                ));
-        HashMap<String,String> user=sessionManager.getUserDetails();
-        Log.e("USER_",user.get(SessionManager.KEY_USER_ID));
+        HashMap<String, String> user = sessionManager.getUserDetails();
+        Log.e("USER_", user.get(SessionManager.KEY_USER_ID));
 
 
     }
 
     private void getProjects() {
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(ApiService.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create()) //Here we are using the GsonConverterFactory to directly convert json data to object
-                .build();
-
 
         //creating the api interface
-        ApiService api = retrofit.create(ApiService.class);
-
-        //now making the call object
-        //Here we are using the api method that we created inside the api interface
-        Call<List<Projects>> call = api.getProjects();
-
-        call.enqueue(new Callback<List<Projects>>() {
+        apiService.getProjects().enqueue(new Callback<List<Projects>>() {
             @Override
             public void onResponse(Call<List<Projects>> call, Response<List<Projects>> response) {
 
                 //In this point we got our Projects list
-                //thats damn easy right ;) 
+                //thats damn easy right ;)
                 List<Projects> projectsList2 = response.body();
 
                 Projects projects2;

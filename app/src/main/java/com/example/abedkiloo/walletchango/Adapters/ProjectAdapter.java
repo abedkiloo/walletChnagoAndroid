@@ -3,7 +3,11 @@ package com.example.abedkiloo.walletchango.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,16 +45,25 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
     @Override
     public void onBindViewHolder(ProjectViewHolder holder, int position) {
         //getting the projects of the specified position
-        Projects projects = projectsList.get(position);
+        final Projects projects = projectsList.get(position);
+
+        SpannableStringBuilder builder = new SpannableStringBuilder();
+
+        String red = String.valueOf(projects.getTarget_investment());
+        SpannableString redSpannable= new SpannableString(red);
+        redSpannable.setSpan(new ForegroundColorSpan(mCtx.getResources().getColor(R.color.colorAccent)), 0, red.length(), 0);
+        builder.append("Collected " + String.valueOf(projects.getAmount_deposited()) + " of ");
+        builder.append(redSpannable);
+
 
         //binding the data with the viewholder views
         holder.textViewTitle.setText(projects.getProject_name());
         holder.textViewShortDesc.setText(projects.getProject_description());
-        holder.tvAmount.setText("Kshs " + String.valueOf(projects.getAmount_deposited()) + " /  " + String.valueOf(projects.getTarget_investment()));
+        holder.tvAmount.setText(builder,TextView.BufferType.SPANNABLE);
         holder.circleDisplay.setAnimDuration(2000);
-        holder.circleDisplay.setValueWidthPercent(45f);
-        holder.circleDisplay.setTextSize(26f);
-        holder.circleDisplay.setColor(R.color.colorPrimary);
+        holder.circleDisplay.setValueWidthPercent(35f);
+        holder.circleDisplay.setTextSize(10f);
+        holder.circleDisplay.setColor(R.color.colorAccent);
         holder.circleDisplay.setDrawText(true);
         holder.circleDisplay.setDrawInnerCircle(true);
         holder.circleDisplay.setFormatDigits(1);
@@ -73,7 +86,9 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
         holder.tvView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCtx.startActivity(new Intent(mCtx, ProjectDetails.class));
+                Intent project_details_intent=new Intent(mCtx,ProjectDetails.class);
+                project_details_intent.putExtra("project_id",projects.getId());
+                mCtx.startActivity(project_details_intent);
             }
         });
     }

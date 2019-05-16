@@ -15,7 +15,7 @@ import retrofit2.http.Path;
 
 public interface ApiService {
 
-    String BASE_URL = "http://192.168.43.101/walletChango/public/api/";
+    String BASE_URL = "http://192.168.1.107/walletChango/public/api/";
 
 
     @GET("project")
@@ -34,8 +34,8 @@ public interface ApiService {
 
     @POST("user/deposit")
     @FormUrlEncoded
-    Call<Wallet> depoitMpesa(@Field("wallet_id") String wallet_id, @Field("user_id") String user_id,
-                             @Field("amount") String amount, @Field("transaction_type") String transaction_type
+    Call<Wallet> depositMpesa(@Field("wallet_id") String wallet_id, @Field("user_id") String user_id,
+                              @Field("amount") String amount, @Field("transaction_type") String transaction_type
     );
 
 }
