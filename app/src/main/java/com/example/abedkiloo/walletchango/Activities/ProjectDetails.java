@@ -31,12 +31,12 @@ public class ProjectDetails extends AppCompatActivity {
         setContentView(R.layout.activity_project_details);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-
-        Intent intent=getIntent();
+        Intent intent = getIntent();
         //get project_id
-        project_id=  intent.getStringExtra("project_id");
+        project_id = intent.getStringExtra("project_id");
         //api service
         apiService = AppUtils.getAPIService();
         initView();
@@ -57,11 +57,13 @@ public class ProjectDetails extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+
             case R.id.home:
-                startActivity(new Intent(getApplicationContext(), MainDrawer.class));
+                finish();
                 break;
         }
         return super.onOptionsItemSelected(item);
+
     }
 
     public void getProjectDetail(final String id) {
@@ -91,4 +93,6 @@ public class ProjectDetails extends AppCompatActivity {
 
 
     }
+
+
 }

@@ -92,6 +92,28 @@
                                 <PersistentState>
                                   <option name="children">
                                     <map>
+                                      <entry key="clipArt">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="color" value="ffffff" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                      <entry key="clipartAsset">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="url" value="jar:file:/home/abedkiloo/dev/android/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_view_list_black_24dp.xml" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
                                       <entry key="image">
                                         <value>
                                           <PersistentState>
@@ -107,12 +129,10 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="assetType" value="IMAGE" />
                                       <entry key="backgroundColor" value="dedede" />
-                                      <entry key="cropped" value="true" />
-                                      <entry key="iconShape" value="CIRCLE" />
+                                      <entry key="iconShape" value="NONE" />
                                       <entry key="imageAsset" value="$USER_HOME$/Downloads/WalletChanfo/mpesa.png" />
-                                      <entry key="outputName" value="ic_mpesa" />
+                                      <entry key="outputName" value="ic_projects" />
                                     </map>
                                   </option>
                                 </PersistentState>

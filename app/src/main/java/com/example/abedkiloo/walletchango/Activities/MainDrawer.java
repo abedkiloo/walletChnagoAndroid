@@ -2,51 +2,34 @@ package com.example.abedkiloo.walletchango.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
-import com.example.abedkiloo.walletchango.Adapters.ProjectAdapter;
-import com.example.abedkiloo.walletchango.DataModel.Projects;
+import com.example.abedkiloo.walletchango.Fragments.Home;
+import com.example.abedkiloo.walletchango.Fragments.Projects;
+import com.example.abedkiloo.walletchango.Fragments.WalletDetail;
 import com.example.abedkiloo.walletchango.Helpers.ApiService;
 import com.example.abedkiloo.walletchango.Helpers.AppUtils;
 import com.example.abedkiloo.walletchango.Helpers.SessionManager;
 import com.example.abedkiloo.walletchango.R;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-
-    //a list to store all the products
-    List<Projects> projectsList = new ArrayList<>();
-
-    //the recyclerview
-    RecyclerView recyclerView;
-
-    ProjectAdapter adapter;
-
-    Projects projects;
 
 
     //session manager
@@ -55,21 +38,52 @@ public class MainDrawer extends AppCompatActivity
     //
     ApiService apiService;
 
+    //
+    Toolbar toolbar;
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment fragment;
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    toolbar.setTitle("Home");
+                    fragment = new Home();
+                    loadFragment(fragment);
+                    return true;
+                case R.id.navigation_projects:
+                    toolbar.setTitle("Projects");
+                    fragment = new Projects();
+                    loadFragment(fragment);
+                    return true;
+                case R.id.navigation_wallet:
+                    toolbar.setTitle("Wallet");
+                    fragment = new WalletDetail();
+                    loadFragment(fragment);
+                    return true;
+
+            }
+
+            return false;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_drawer);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(view.getContext(), CreateFundRequest.class));
-            }
-        });
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+
+        loadFragment(new Home());
+
+
 
         //api service
         apiService = AppUtils.getAPIService();
@@ -85,74 +99,12 @@ public class MainDrawer extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        //initializing the projectlist
-        projectsList = new ArrayList<>();
-
-
         sessionManager = new SessionManager(getApplicationContext());
         sessionManager.checkLogin();
-
-//getting the recyclerview from xml
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-
-        LinearLayoutManager layoutManager
-                = new LinearLayoutManager(this, OrientationHelper.VERTICAL, false);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-        adapter = new ProjectAdapter(getApplicationContext(), projectsList);
-
-        //setting adapter to recyclerview
-        recyclerView.setAdapter(adapter);
-
-        getProjects();
 
 
         HashMap<String, String> user = sessionManager.getUserDetails();
         Log.e("USER_", user.get(SessionManager.KEY_USER_ID));
-
-
-    }
-
-    private void getProjects() {
-
-
-        //creating the api interface
-        apiService.getProjects().enqueue(new Callback<List<Projects>>() {
-            @Override
-            public void onResponse(Call<List<Projects>> call, Response<List<Projects>> response) {
-
-                //In this point we got our Projects list
-                //thats damn easy right ;)
-                List<Projects> projectsList2 = response.body();
-
-                Projects projects2;
-
-                for (int i = 0; i < projectsList2.size(); i++) {
-                    projects2 = new Projects();
-                    projects2.setId(projectsList2.get(i).getId());
-                    projects2.setProject_name(projectsList2.get(i).getProject_name());
-                    projects2.setProject_description(projectsList2.get(i).getProject_description());
-                    projects2.setAmount_deposited(projectsList2.get(i).getAmount_deposited());
-                    projects2.setTarget_investment(projectsList2.get(i).getTarget_investment());
-                    projectsList.add(projects2);
-
-                }
-
-                adapter.notifyDataSetChanged();
-
-                //creating recyclerview adapter
-
-
-                //now we can do whatever we want with this list
-
-            }
-
-            @Override
-            public void onFailure(Call<List<Projects>> call, Throwable t) {
-                Log.e("RETROFIT_ERROR", t.toString());
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
 
 
     }
@@ -167,6 +119,7 @@ public class MainDrawer extends AppCompatActivity
         }
     }
 
+    //
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -177,7 +130,7 @@ public class MainDrawer extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
+        // automatically handle clicks on the Projects/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
@@ -212,4 +165,13 @@ public class MainDrawer extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    private void loadFragment(Fragment fragment) {
+        // load fragment
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
 }

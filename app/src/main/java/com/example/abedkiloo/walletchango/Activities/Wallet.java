@@ -22,9 +22,14 @@ public class Wallet extends AppCompatActivity implements TabLayout.OnTabSelected
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wallet);
 
+
 //        Adding toolbar to the activity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 //        Initializing the tablayout
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);

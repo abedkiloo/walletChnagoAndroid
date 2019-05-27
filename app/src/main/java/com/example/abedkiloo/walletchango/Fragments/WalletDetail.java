@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.abedkiloo.walletchango.Activities.DepositAmount;
 import com.example.abedkiloo.walletchango.DataModel.Wallet;
@@ -74,14 +73,17 @@ public class WalletDetail extends Fragment {
     }
 
     public void wallet_detail() {
-        apiService.getWalletDetail(user_details.get(SessionManager.KEY_USER_ID)).enqueue(new Callback<Wallet>() {
+        Log.e("WALLET","EXE");
+//        user_details.get(SessionManager.KEY_USER_ID)
+        apiService.getWalletDetail("2").enqueue(new Callback<Wallet>() {
             @Override
             public void onResponse(Call<Wallet> call, Response<Wallet> response) {
-
+                Log.e("WALLET", response.toString());
                 Wallet wallet = response.body();
                 amount.setText(getString(R.string.your_wallet_amount_is) + wallet.getWallet_amount());
                 wallet_id = wallet.getWallet_id();
             }
+
 
             @Override
             public void onFailure(Call<Wallet> call, Throwable t) {

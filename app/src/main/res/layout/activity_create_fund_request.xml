@@ -1,9 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.CreateFundRequest">
+
+    <LinearLayout
+        android:id="@+id/header_money"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_margin="@dimen/dp_30"
+        android:background="@drawable/custom_borders"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="@dimen/dp_65"
+            android:layout_height="match_parent"
+            android:background="@drawable/custom_primary_button"
+            android:padding="@dimen/dp_5">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:padding="@dimen/dp_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kshs" />
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/kshs" />
+    </LinearLayout>
+
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/header_project"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header_money"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:enabled="false"
+        android:text="@string/project_details"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/project_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_below="@+id/header_project"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:background="@drawable/custom_borders"
+        android:enabled="false"
+        android:hint="@string/project_name"
+        android:padding="@dimen/dp_10" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/project_description"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_100"
+        android:layout_below="@+id/project_name"
+        android:layout_margin="@dimen/dp_20"
+        android:background="@drawable/custom_borders"
+        android:hint="@string/project_name"
+        android:padding="@dimen/dp_10" />
+
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/header_finance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/project_description"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:enabled="false"
+        android:text="@string/project_details"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/nav_finance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header_finance"
+        android:weightSum="1">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/target_group_number"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_5"
+            android:layout_weight="0.4"
+            android:background="@drawable/custom_borders"
+            android:hint="@string/project_name"
+            android:padding="@dimen/dp_5" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/project_target_amount"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_weight="0.6"
+            android:background="@drawable/custom_borders"
+            android:hint="@string/project_name"
+            android:padding="@dimen/dp_5" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:paddingTop="@dimen/dp_10" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nav_finance">
+
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/dp_40"
+            android:layout_marginRight="@dimen/dp_40"
+            android:layout_height="wrap_content"
+            android:text="@string/create"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"
+            android:background="@drawable/custom_accent_button" />
+    </RelativeLayout>
+
 
 </RelativeLayout>

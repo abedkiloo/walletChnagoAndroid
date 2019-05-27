@@ -16,7 +16,7 @@
     <string name="cause_progress">CAUSE PROGRESS</string>
     <string name="raised_kshs">Raised Amount Kshs:  </string>
     <string name="total_investors">Total Investors : </string>
-    <string name="your_wallet_amount_is">Your wallet Amount is :</string>
+    <string name="your_wallet_amount_is">Previous is :</string>
     <string name="log_in">Log In</string>
     <string name="sign_up">Sign Up</string>
     <string name="email">Email</string>
@@ -32,4 +32,12 @@
     <string name="mpesa">Mpesa</string>
     <string name="select_deposit_type">Select Deposit Type</string>
     <string name="deposit_amount">Deposit Amount</string>
+    <string name="kshs">Kshs</string>
+    <string name="project_name">Project Name</string>
+    <string name="project_details">Project Details</string>
+    <string name="create">Create</string>
+    <string name="home">Home</string>
+    <string name="project">Projects</string>
+    <string name="all_project">All Projects</string>
+    <string name="view_full_statement">View Full Statement</string>
 </resources>

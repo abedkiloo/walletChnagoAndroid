@@ -11,48 +11,132 @@
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:src="@drawable/ic_wallet" />
 
-    <android.support.v7.widget.AppCompatTextView
-        android:layout_margin="20dp"
-        android:id="@+id/wallet_amount"
-        android:textAlignment="center"
-        android:layout_below="@+id/wallet_pic"
+    <android.support.v7.widget.LinearLayoutCompat
+        android:id="@+id/balances"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="@string/your_wallet_amount_is"/>
+        android:layout_below="@+id/wallet_pic"
+        android:padding="@dimen/dp_10"
+        android:weightSum="1">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_100"
+            android:layout_gravity="center"
+            android:layout_weight="0.3"
+            android:background="@drawable/circular">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/previous_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/dp_5"
+                android:text="@string/your_wallet_amount_is"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.4"
+            android:background="@drawable/circular">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/wallet_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/dp_5"
+                android:text="@string/your_wallet_amount_is"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_100"
+            android:layout_gravity="center"
+            android:layout_weight="0.3"
+            android:background="@drawable/circular">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/expected_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/dp_5"
+                android:text="@string/your_wallet_amount_is"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+        </RelativeLayout>
+    </android.support.v7.widget.LinearLayoutCompat>
+
 
     <LinearLayout
+        android:id="@+id/wallet_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/balances"
         android:orientation="horizontal"
         android:weightSum="1">
 
 
         <TextView
-            android:layout_width="0sp"
-            android:layout_height="60sp"
-            android:layout_weight="0.5"
             android:id="@+id/deposit_amount"
+            android:layout_width="0sp"
+            android:layout_height="@dimen/dp_40"
+            android:layout_margin="@dimen/dp_10"
+            android:layout_weight="0.5"
             android:background="@drawable/custom_primary_button"
             android:padding="10sp"
             android:text="@string/deposit_now"
             android:textAlignment="center"
-            android:textColor="#fff"
-            android:textSize="20sp" />
+            android:textColor="#fff" />
 
 
         <TextView
             android:layout_width="0sp"
-            android:layout_height="60sp"
+            android:layout_height="@dimen/dp_40"
+            android:layout_margin="@dimen/dp_10"
             android:layout_weight="0.5"
             android:background="@drawable/custom_button"
             android:padding="10sp"
             android:text="@string/withdraw_amount"
             android:textAlignment="center"
-            android:textColor="#fff"
-            android:textSize="20sp" />
+            android:textColor="#fff" />
     </LinearLayout>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/wallet_buttons"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:drawableStart="@mipmap/ic_list"
+            android:drawableLeft="@mipmap/ic_list" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:layout_margin="@dimen/dp_20"
+            android:text="@string/view_full_statement" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:drawableEnd="@mipmap/ic_right"
+            android:drawableRight="@mipmap/ic_right" />
+    </android.support.v7.widget.LinearLayoutCompat>
 
 
 </RelativeLayout>
