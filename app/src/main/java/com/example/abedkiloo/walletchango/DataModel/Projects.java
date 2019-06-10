@@ -1,46 +1,47 @@
 package com.example.abedkiloo.walletchango.DataModel;
 
+import com.example.abedkiloo.walletchango.Helpers.AppUtils;
 import com.google.gson.annotations.SerializedName;
 
 public class Projects {
     private String id;
 
+
+    @SerializedName("image_url")
+    private String image_url;
     @SerializedName("project_name")
     private String project_name;
 
     @SerializedName("project_description")
     private String project_description;
 
+
+    @SerializedName("project_details")
+    private String project_details;
+
     @SerializedName("group")
     private Group group;
 
     @SerializedName("minimum_deposit")
     private String minimum_deposit;
-
+    @SerializedName("project_type")
+    private String project_type;
     @SerializedName("project_target_amount")
     private int target_investment;
-
-
     @SerializedName("members_subscribed")
     private int members_subscribed;
-
     @SerializedName("amount_collected")
     private int amount_deposited;
-
     @SerializedName("start_date")
     private String start_date;
-
     @SerializedName("end_date")
     private String end_date;
-
-
     @SerializedName("user")
     private User user;
 
-
-
     public Projects() {
     }
+
 
     public Projects(String id, String project_name, String project_description, int amount_deposited, int target_investment) {
         this.id = id;
@@ -48,6 +49,14 @@ public class Projects {
         this.project_description = project_description;
         this.amount_deposited = amount_deposited;
         this.target_investment = target_investment;
+    }
+
+    public String getProject_type() {
+        return project_type;
+    }
+
+    public void setProject_type(String project_type) {
+        this.project_type = project_type;
     }
 
     public String getProject_description() {
@@ -131,7 +140,6 @@ public class Projects {
     }
 
 
-
     public User getUser() {
         return user;
     }
@@ -140,5 +148,21 @@ public class Projects {
         this.user = user;
     }
 
+
+    public String getProject_details() {
+        return project_details;
+    }
+
+    public void setProject_details(String project_details) {
+        this.project_details = project_details;
+    }
+
+    public String getImage_url() {
+        return  image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
 }
 

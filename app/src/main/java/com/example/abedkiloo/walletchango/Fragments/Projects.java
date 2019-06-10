@@ -35,7 +35,6 @@ public class Projects extends Fragment {
     List<com.example.abedkiloo.walletchango.DataModel.Projects> projectsList = new ArrayList<>();
 
 
-
     // Session Manager Class
     SessionManager session;
     // api service for request to db
@@ -104,9 +103,9 @@ public class Projects extends Fragment {
         apiService.getProjects().enqueue(new Callback<List<com.example.abedkiloo.walletchango.DataModel.Projects>>() {
             @Override
             public void onResponse(Call<List<com.example.abedkiloo.walletchango.DataModel.Projects>> call, Response<List<com.example.abedkiloo.walletchango.DataModel.Projects>> response) {
-
+                Log.e("ALL_PROJECTS", String.valueOf(response.body()));
                 //In this point we got our Projects list
-                //thats damn easy right ;)
+
                 List<com.example.abedkiloo.walletchango.DataModel.Projects> projectsList2 = response.body();
 
                 com.example.abedkiloo.walletchango.DataModel.Projects projects2;
@@ -118,6 +117,7 @@ public class Projects extends Fragment {
                     projects2.setProject_description(projectsList2.get(i).getProject_description());
                     projects2.setAmount_deposited(projectsList2.get(i).getAmount_deposited());
                     projects2.setTarget_investment(projectsList2.get(i).getTarget_investment());
+                    projects2.setImage_url(projectsList2.get(i).getImage_url());
                     projectsList.add(projects2);
 
                 }

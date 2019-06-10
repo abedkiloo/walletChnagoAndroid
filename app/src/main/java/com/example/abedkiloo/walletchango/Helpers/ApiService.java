@@ -15,7 +15,6 @@ import retrofit2.http.Path;
 
 public interface ApiService {
 
-    String BASE_URL = "http://192.168.1.107/walletChango/public/api/";
 
 
     @GET("project")

@@ -8,7 +8,9 @@ public class AppUtils {
     public AppUtils() {
     }
 
-    public static final String BASE_URL = "http://192.168.43.101/walletChango/public/api/";
+    public static final String URL = "http://192.168.43.101/walletChango";
+    public static final String BASE_URL = URL+"/public/api/";
+    public static final String Image_BASE_URL =URL+"/storage/app/public/upload/images/projects/original/";
 
 
     public static ApiService getAPIService() {

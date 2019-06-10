@@ -3,11 +3,12 @@ package com.example.abedkiloo.walletchango.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,10 @@ import android.widget.TextView;
 
 import com.example.abedkiloo.walletchango.Activities.ProjectDetails;
 import com.example.abedkiloo.walletchango.DataModel.Projects;
+import com.example.abedkiloo.walletchango.Helpers.AppUtils;
 import com.example.abedkiloo.walletchango.Helpers.CircleDisplay;
 import com.example.abedkiloo.walletchango.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -50,7 +53,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
         SpannableStringBuilder builder = new SpannableStringBuilder();
 
         String red = String.valueOf(projects.getTarget_investment());
-        SpannableString redSpannable= new SpannableString(red);
+        SpannableString redSpannable = new SpannableString(red);
         redSpannable.setSpan(new ForegroundColorSpan(mCtx.getResources().getColor(R.color.colorAccent)), 0, red.length(), 0);
         builder.append("Collected " + String.valueOf(projects.getAmount_deposited()) + " of ");
         builder.append(redSpannable);
@@ -58,8 +61,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
 
         //binding the data with the viewholder views
         holder.textViewTitle.setText(projects.getProject_name());
-        holder.textViewShortDesc.setText(projects.getProject_description());
-        holder.tvAmount.setText(builder,TextView.BufferType.SPANNABLE);
+        holder.tvAmount.setText(builder, TextView.BufferType.SPANNABLE);
         holder.circleDisplay.setAnimDuration(2000);
         holder.circleDisplay.setValueWidthPercent(35f);
         holder.circleDisplay.setTextSize(10f);
@@ -79,6 +81,8 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
 
             }
         });
+        Picasso.with(mCtx).
+                load(AppUtils.Image_BASE_URL + projects.getImage_url()).into(holder.project_image);
         holder.circleDisplay.setUnit("%");
         holder.circleDisplay.setStepSize(0.7f);
         // cd.setCustomText(...); // sets a custom array of text
@@ -86,11 +90,13 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
         holder.tvView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent project_details_intent=new Intent(mCtx,ProjectDetails.class);
-                project_details_intent.putExtra("project_id",projects.getId());
+                Intent project_details_intent = new Intent(mCtx, ProjectDetails.class);
+                project_details_intent.putExtra("project_id", projects.getId());
                 mCtx.startActivity(project_details_intent);
             }
         });
+
+
     }
 
 
@@ -102,18 +108,19 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
 
     class ProjectViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewTitle, textViewShortDesc, tvView, tvAmount;
+        TextView textViewTitle, tvView, tvAmount;
         CircleDisplay circleDisplay;
+        AppCompatImageView project_image;
 
 
         public ProjectViewHolder(View itemView) {
             super(itemView);
 
             textViewTitle = itemView.findViewById(R.id.textViewTitle);
-            textViewShortDesc = itemView.findViewById(R.id.textViewShortDesc);
             tvView = itemView.findViewById(R.id.tView);
             tvAmount = itemView.findViewById(R.id.tvAmount);
             circleDisplay = itemView.findViewById(R.id.circularDisplay);
+            project_image = itemView.findViewById(R.id.project_image);
         }
     }
 }

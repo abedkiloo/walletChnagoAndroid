@@ -15,29 +15,30 @@
             android:padding="8dp">
 
             <RelativeLayout
+                android:id="@+id/project_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
 
-                <ImageView
+                <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/project_image"
                     android:layout_width="match_parent"
-                    android:layout_height="80sp"
+                    android:layout_height="100sp"
                     android:layout_margin="@dimen/dp_5"
                     android:alpha=".75"
                     android:scaleType="fitXY"
-                    android:src="@mipmap/fund"
+                    android:src="@mipmap/crowd_fund"
                     android:visibility="visible" />
 
                 <com.example.abedkiloo.walletchango.Helpers.CircleDisplay
                     android:id="@+id/circularDisplay"
-                    android:layout_width="47dp"
-                    android:layout_height="47dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="57dp" />
+                    android:layout_width="60sp"
+                    android:layout_height="60sp"
+                    android:layout_below="@+id/project_image"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="-35dp" />
 
 
                 <RelativeLayout
@@ -63,28 +64,14 @@
                             android:textAlignment="center"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/colorPrimaryDark"
-
                             android:textSize="@dimen/dp_20" />
 
-                        <TextView
-                            android:id="@+id/textViewShortDesc"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/textViewTitle"
-                            android:layout_margin="@dimen/dp_10"
-                            android:layout_toEndOf="@id/circularDisplay"
-                            android:layout_toRightOf="@id/circularDisplay"
-                            android:text="13.3 Inch, 256 GB"
-
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                            android:textStyle="italic"
-                            android:visibility="gone" />
 
                         <TextView
                             android:id="@+id/tvAmount"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/textViewShortDesc"
+                            android:layout_below="@id/textViewTitle"
                             android:layout_marginLeft="@dimen/dp_10"
 
                             android:layout_toRightOf="@id/circularDisplay"
@@ -116,7 +103,9 @@
 
                 </RelativeLayout>
 
+
             </RelativeLayout>
+
 
         </RelativeLayout>
 
