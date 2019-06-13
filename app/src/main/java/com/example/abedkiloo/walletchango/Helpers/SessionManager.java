@@ -31,6 +31,8 @@ public class SessionManager {
     // User name (make variable public to access from outside)
     public static final String KEY_NAME = "name";
 
+    public static final String KEY_TOKEN = "token";
+
     // Email address (make variable public to access from outside)
     public static final String KEY_EMAIL = "email";
 
@@ -47,7 +49,7 @@ public class SessionManager {
     /**
      * Create login session
      */
-    public void createLoginSession(String id, String name, String email) {
+    public void createLoginSession(String id, String name, String email,String token) {
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
 
@@ -59,6 +61,9 @@ public class SessionManager {
 
         // Storing email in pref
         editor.putString(KEY_EMAIL, email);
+
+        // Storing email in pref
+        editor.putString(KEY_TOKEN, token);
 
         // commit changes
         editor.commit();
@@ -93,6 +98,8 @@ public class SessionManager {
     public HashMap<String, String> getUserDetails() {
         HashMap<String, String> user = new HashMap<String, String>();
         // user id
+        user.put(KEY_TOKEN, pref.getString(KEY_TOKEN, null));
+
         user.put(KEY_USER_ID, pref.getString(KEY_USER_ID, null));
 
         // user name

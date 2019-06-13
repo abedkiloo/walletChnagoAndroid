@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 /* Create an Intent that will start the Menu-Activity. */
-                Intent mainIntent = new Intent(MainActivity.this, MainDrawer.class);
+                Intent mainIntent = new Intent(MainActivity.this, Login.class);
                 MainActivity.this.startActivity(mainIntent);
                 MainActivity.this.finish();
             }

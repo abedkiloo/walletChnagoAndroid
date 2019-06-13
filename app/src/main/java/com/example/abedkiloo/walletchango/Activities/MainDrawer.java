@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -16,7 +15,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.abedkiloo.walletchango.Fragments.Home;
 import com.example.abedkiloo.walletchango.Fragments.Projects;
@@ -33,7 +31,7 @@ public class MainDrawer extends AppCompatActivity
 
 
     //session manager
-    SessionManager sessionManager;
+    public static SessionManager sessionManager;
 
     //
     ApiService apiService;
@@ -77,12 +75,14 @@ public class MainDrawer extends AppCompatActivity
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        sessionManager = new SessionManager(getApplicationContext());
+
+
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
 
         loadFragment(new Home());
-
 
 
         //api service
@@ -99,7 +99,6 @@ public class MainDrawer extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        sessionManager = new SessionManager(getApplicationContext());
         sessionManager.checkLogin();
 
 

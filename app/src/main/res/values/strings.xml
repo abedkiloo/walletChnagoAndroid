@@ -41,4 +41,7 @@
     <string name="all_project">All Projects</string>
     <string name="view_full_statement">View Full Statement</string>
     <string name="invest">Invest</string>
+    <string name="on_going_projects">On Going Projects</string>
+    <string name="draft_projects">Draft \n Projects</string>
+    <string name="completed_projects">Completed Projects</string>
 </resources>

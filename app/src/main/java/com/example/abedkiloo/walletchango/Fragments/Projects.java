@@ -57,12 +57,15 @@ public class Projects extends Fragment {
     //wallet detail
     String wallet_id;
 
+    HashMap<String, String> user;
+
     //Overriden method onCreateView
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         apiService = AppUtils.getAPIService();
         session = new SessionManager(getContext());
+        user = session.getUserDetails();
 
 
         View rootView = inflater.inflate(R.layout.projects, container, false);
@@ -89,6 +92,8 @@ public class Projects extends Fragment {
         //setting adapter to recyclerview
         recyclerView.setAdapter(adapter);
 
+        Log.e("USER_TOKEN", user.get(SessionManager.KEY_TOKEN));
+
         getProjects();
 
         return rootView;
@@ -109,7 +114,7 @@ public class Projects extends Fragment {
                 List<com.example.abedkiloo.walletchango.DataModel.Projects> projectsList2 = response.body();
 
                 com.example.abedkiloo.walletchango.DataModel.Projects projects2;
-
+//
                 for (int i = 0; i < projectsList2.size(); i++) {
                     projects2 = new com.example.abedkiloo.walletchango.DataModel.Projects();
                     projects2.setId(projectsList2.get(i).getId());
